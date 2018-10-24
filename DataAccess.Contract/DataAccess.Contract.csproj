@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AssemblyName>DataAccess.Contract</AssemblyName>
+    <RootNamespace>DAL.DataAccess.Contract</RootNamespace>
+  </PropertyGroup>
+
+</Project>
