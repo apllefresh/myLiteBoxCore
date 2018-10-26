@@ -1,9 +1,9 @@
-﻿namespace DAL.Entities
+﻿namespace BLL.Entities
 {
     public class InventoryResult
     {
         public int Id { get; set; }
-        
+
         public decimal CountFact { get; set; }
         public decimal SumFact { get; set; }
 

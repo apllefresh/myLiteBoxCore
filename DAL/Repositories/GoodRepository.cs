@@ -9,8 +9,6 @@ namespace DAL.Repositories
 {
     public class GoodRepository : DataAccessRepository<Good>, IRepository<Good>
     {
-        private ApplicationContext db;
-
         public GoodRepository(ApplicationContext context) : base(context) { }
 
     }

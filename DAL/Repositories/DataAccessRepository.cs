@@ -4,6 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using System.Threading.Tasks;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories
 {
@@ -18,40 +24,45 @@ namespace DAL.Repositories
             _dbSet = context.Set<T>();
         }
 
-        public virtual IEnumerable<T> GetAll()
+        public virtual async Task<IEnumerable<T>> GetAll()
         {
-            return _dbSet.AsNoTracking().ToList();
+            return await _dbSet.AsNoTracking().ToListAsync().ConfigureAwait(false);
         }
 
-        public virtual T Get(int id)
+        public virtual async Task<T> Get(int id)
         {
-            return _dbSet.Find(id);
+            return await _dbSet.FindAsync(id).ConfigureAwait(false) as T;
         }
 
-        public virtual IEnumerable<T> Find(Func<T, Boolean> predicate)
+
+        //public virtual IEnumerable<T> Find(Func<T, Boolean> predicate)
+        //{
+        //    return _dbSet.Where(predicate);
+        //}
+
+        public virtual async Task<IEnumerable<T>> Find(Func<T, Boolean> predicate)
         {
-            return _dbSet.AsNoTracking().Where(predicate).ToList();
+            var result = _dbSet.Where(predicate);
+
+            return await result.AsQueryable<T>().ToListAsync().ConfigureAwait(false);// ToAsyncEnumerable<IEnumerable<T>>();
+            
         }
 
-        //void Create(T item);
-        //void Update(T item);
-        //void Delete(int id);
-
-        public virtual void Create(T item)
+        public virtual async Task Create(T item)
         {
-            _dbSet.Add(item);
-            db.SaveChanges();
+            await _dbSet.AddAsync(item).ConfigureAwait(false);
+            await db.SaveChangesAsync().ConfigureAwait(false);
         }
-        public virtual void Update(T item)
+        public virtual async Task Update(T item)
         {
             db.Entry(item).State = EntityState.Modified;
-            db.SaveChanges();
+            await db.SaveChangesAsync().ConfigureAwait(false); 
         }
-        public virtual void Delete(int id)
+        public virtual async Task Delete(int id)
         {
-             T item = Get(id);
+             T item = await Get(id);
             _dbSet.Remove(item);
-            db.SaveChanges();
+            await db.SaveChangesAsync().ConfigureAwait(false);
         }
 
     }
