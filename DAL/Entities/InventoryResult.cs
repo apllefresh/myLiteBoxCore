@@ -13,7 +13,8 @@
         public decimal CountDiff { get; set; }
         public decimal SumDiff { get; set; }
 
-        Department department { get; set; }
-        InventoryDate inventoryDate { get; set; }
+        public int GoodGroupId { get; set; }
+        public int DepartmentId { get; set; }
+        public int InventoryDateId { get; set; }
     }
 }

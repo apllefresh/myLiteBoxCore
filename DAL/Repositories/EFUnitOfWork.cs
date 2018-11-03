@@ -11,6 +11,9 @@ namespace DAL.Repositories
     {
         private ApplicationContext db;
         private GoodRepository goodRepository;
+        private GoodGroupRepository goodGroupRepository;
+        private DepartmentRepository departmentRepository;
+
         private InventoryDateRepository inventoryDateRepository;
         private InventoryResultRepository inventoryResultRepository;
         private InventoryHeadRepository inventoryHeadRepository;
@@ -28,6 +31,24 @@ namespace DAL.Repositories
                 if (goodRepository == null)
                     goodRepository = new GoodRepository(db);
                 return goodRepository;
+            }
+        }
+        public IRepository<GoodGroup> GoodGroups
+        {
+            get
+            {
+                if (goodGroupRepository == null)
+                    goodGroupRepository = new GoodGroupRepository(db);
+                return goodGroupRepository;
+            }
+        }
+        public IRepository<Department> Departments
+        {
+            get
+            {
+                if (departmentRepository == null)
+                    departmentRepository = new DepartmentRepository(db);
+                return departmentRepository;
             }
         }
 
@@ -70,8 +91,6 @@ namespace DAL.Repositories
 
         public void Save()
         {
-            //DbSet<InventoryDate> f =  db.InventoryDates;
-            
             db.SaveChanges();
         }
 

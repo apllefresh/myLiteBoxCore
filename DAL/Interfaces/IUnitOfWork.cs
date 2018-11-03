@@ -11,6 +11,8 @@ namespace DAL.Interfaces
         IRepository<InventoryResult> InventoryResults { get; }
         
         IRepository<Good> Goods { get; }
+        IRepository<GoodGroup> GoodGroups { get; }
+        IRepository<Department> Departments { get; }
         void Save();
     }
 }
