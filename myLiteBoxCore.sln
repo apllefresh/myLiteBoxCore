@@ -7,17 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLL", "BLL\BLL.csproj", "{D0861D9D-81AF-445F-B043-BA701007AB14}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB Scripts", "DB Scripts", "{8A1E9336-F0AB-4718-921F-33BFDC6BB516}"
-	ProjectSection(SolutionItems) = preProject
-		DB scripts\Department.sql = DB scripts\Department.sql
-		DB scripts\Good.sql = DB scripts\Good.sql
-		DB scripts\GoodGroup.sql = DB scripts\GoodGroup.sql
-		DB scripts\InventoryBody.sql = DB scripts\InventoryBody.sql
-		DB scripts\InventoryDate.sql = DB scripts\InventoryDate.sql
-		DB scripts\InventoryHead.sql = DB scripts\InventoryHead.sql
-		DB scripts\InventoryResult.sql = DB scripts\InventoryResult.sql
-		DB scripts\MyLTdb.sql = DB scripts\MyLTdb.sql
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{42E497FB-6D16-42FE-9703-63B1F10D19F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +23,10 @@ Global
 		{D0861D9D-81AF-445F-B043-BA701007AB14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0861D9D-81AF-445F-B043-BA701007AB14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0861D9D-81AF-445F-B043-BA701007AB14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42E497FB-6D16-42FE-9703-63B1F10D19F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42E497FB-6D16-42FE-9703-63B1F10D19F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42E497FB-6D16-42FE-9703-63B1F10D19F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42E497FB-6D16-42FE-9703-63B1F10D19F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
