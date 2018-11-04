@@ -21,6 +21,8 @@ namespace BLL.DI
 
             CreateMap<D.Department, B.Department>()
                 .ReverseMap();
+            CreateMap<D.GoodGroup, B.GoodGroup>()
+                .ReverseMap();
             CreateMap<D.Good, B.Good>()
                 .ReverseMap();
 
