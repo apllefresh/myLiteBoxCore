@@ -5,9 +5,9 @@ namespace BLL.Entities
 {
     public class InventoryDate
     {
-        public int Id { get; set; }
-        public DateTime Date { get; set; }
-        public decimal DateGet2Price { get; set; }
+        public int id { get; set; }
+        public DateTime date { get; set; }
+        public DateTime dateget2price { get; set; }
 
         IEnumerable<InventoryHead> inventoryHeads { get; set; }
     }

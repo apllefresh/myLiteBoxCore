@@ -4,6 +4,7 @@ using DAL.Entities;
 
 using System;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace DAL.Repositories
 {
@@ -21,7 +22,7 @@ namespace DAL.Repositories
 
         public EFUnitOfWork()
         {
-            db = new ApplicationContext();
+            //db = new ApplicationContext(configuration);
         }
 
         public IRepository<Good> Goods

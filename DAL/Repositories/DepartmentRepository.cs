@@ -6,6 +6,10 @@ namespace DAL.Repositories
 {
     class DepartmentRepository : DataAccessRepository<Department>, IRepository<Department>
     {
-        public DepartmentRepository(ApplicationContext context) : base(context) { }
+        private ApplicationContext _context;
+        public DepartmentRepository(ApplicationContext context) : base(context)
+        {
+            _context = context;
+        }
     }
 }

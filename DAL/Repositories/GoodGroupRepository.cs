@@ -6,6 +6,10 @@ namespace DAL.Repositories
 {
     class GoodGroupRepository : DataAccessRepository<GoodGroup>, IRepository<GoodGroup>
     {
-        public GoodGroupRepository(ApplicationContext context) : base(context) { }
+        private ApplicationContext _context;
+        public GoodGroupRepository(ApplicationContext context) : base(context)
+        {
+            _context = context;
+        }
     }
 }

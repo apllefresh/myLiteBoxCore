@@ -17,6 +17,7 @@ namespace DAL.Repositories
         public DataAccessRepository(ApplicationContext context)
         {
             this.db = context;
+            context.Database.OpenConnection();
             _dbSet = context.Set<T>();
         }
 

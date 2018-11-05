@@ -2,7 +2,7 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using BLL.DI;
-
+using DAL.DI;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -25,7 +25,7 @@ namespace API
             {
                 services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
                 var builder = new ContainerBuilder();
-                //builder.RegisterModule(new DataAccessAutofacModule());
+                builder.RegisterModule(new DALAutofacModule());
                 builder.RegisterModule(new BLLAutofacModule());
                 builder.Populate(services);
                 var container = builder.Build();

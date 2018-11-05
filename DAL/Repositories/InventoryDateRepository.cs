@@ -6,6 +6,10 @@ namespace DAL.Repositories
 {
     public class InventoryDateRepository : DataAccessRepository<InventoryDate>, IRepository<InventoryDate>
     {
-        public InventoryDateRepository(ApplicationContext context) : base(context) { }
+        private ApplicationContext _context;
+        public InventoryDateRepository(ApplicationContext context) : base(context)
+        {
+            _context = context;
+        }
     }
 }

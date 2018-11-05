@@ -7,6 +7,11 @@ namespace DAL.Repositories
 {
     public class InventoryBodyRepository : DataAccessRepository<InventoryBody>,IRepository<InventoryBody>
     {
-        public InventoryBodyRepository(ApplicationContext context):base(context){ }
+        private ApplicationContext _context;
+
+        public InventoryBodyRepository(ApplicationContext context) : base(context) 
+        {
+            _context = context;            
+        }
     }
 }
