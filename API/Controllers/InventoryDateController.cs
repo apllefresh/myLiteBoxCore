@@ -23,6 +23,7 @@ namespace API.Controllers
             _businessLogicService = businessLogicService;
         }
 
+        [Route("page")]
         [HttpGet]
         public override IActionResult GetAllItems()
         {

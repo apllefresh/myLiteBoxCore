@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="App\inventory\inventory.jsx" />
+    <Content Include="App\containers\inventory\inventory.jsx" />
     <Content Include="Views\Home\Index.cshtml.cs" />
   </ItemGroup>
 
