@@ -24,7 +24,8 @@ namespace API
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();            services.AddReact();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddReact();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             var builder = new ContainerBuilder();
@@ -40,18 +41,28 @@ namespace API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseWebpackDevMiddleware(); // 1
             }
             else
             {
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseReact(config => { });
-            
-            app.UseDefaultFiles();
+            
             app.UseStaticFiles();
-            app.UseMvc();
+            //app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
+                    name: "DefaultApi",
+                    template: "api/{controller}/{action}/{id?}");
+                routes.MapSpaFallbackRoute("spa-fallback", new { controller = "Home", action = "Index" });
+            });
         }
     }
 

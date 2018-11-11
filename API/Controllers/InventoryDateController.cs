@@ -16,11 +16,32 @@ namespace API.Controllers
     [ApiController]
     public class InventoryDateController : GenericController<B.InventoryDate, D.InventoryDate>
     {
-        private BI.IInventoryService _formulaService;
+        private BI.IInventoryService _businessLogicService;
 
-        public InventoryDateController(BI.IInventoryService formulaService) : base(formulaService)
+        public InventoryDateController(BI.IInventoryService businessLogicService) : base(businessLogicService)
         {
-            _formulaService = formulaService;
+            _businessLogicService = businessLogicService;
         }
+
+        [HttpGet]
+        public override IActionResult GetAllItems()
+        {
+            try
+            {
+                var services = _businessLogicService.GetAllItems();
+                var q = from d in services
+                        select new
+                        {
+                            label = d.date,
+                            value = d.id
+                        };
+                return Ok(JsonConvert.SerializeObject(q));
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(500, exception.Message);
+            }
+        }
+
     }
 }
