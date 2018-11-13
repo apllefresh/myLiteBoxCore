@@ -22,5 +22,19 @@ namespace API.Controllers
         {
             _formulaService = formulaService;
         }
+
+        [HttpGet]
+        public override IActionResult GetAllItems()
+        {
+            try
+            {
+                var services = _formulaService.GetAllItems();
+                return Ok(JsonConvert.SerializeObject(services));
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(500, exception.Message);
+            }
+        }
     }
 }
