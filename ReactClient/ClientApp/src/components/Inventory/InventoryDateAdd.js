@@ -5,29 +5,27 @@ import DatePicker from 'react-date-picker';
 class InventoryDateAdd extends Component {
     constructor(props, context) {
         super(props, context);
-
+        
         this.handleHide = this.handleHide.bind(this);
         this.addDate = this.addDate.bind(this);
 
         this.state = {
             show: false,
-            date: new Date()
+            date: new Date(),
         };
     }
 
     handleHide() {
         this.setState({ show: false });
-        
     }
+
     onChange = date => this.setState({ date })
 
     addDate() {
-        
         var newDate = {
             "date": this.state.date,
             "dateget2price": this.state.date
         }
-        
         fetch('api/inventory/',
             {
                 method: 'POST',
@@ -37,7 +35,6 @@ class InventoryDateAdd extends Component {
                 },
                 body: JSON.stringify(newDate)
             });
-            
         this.setState({ show: false });
     }
 
@@ -47,21 +44,19 @@ class InventoryDateAdd extends Component {
                 <Button
                     bsStyle="primary"
                     bsSize="large"
-                    onClick={() => this.setState({ show: true })}
-                >
-                    Add Inventory Date
-        </Button>
+                    onClick={() => this.setState({ show: true })}>
+                   Add Inventory Date
+                </Button>
 
                 <Modal
                     show={this.state.show}
                     onHide={this.handleHide}
-                    {...this.props}
                     container={this}
                     aria-labelledby="contained-modal-title"
                 >
                     <Modal.Header closeButton>
                           <Modal.Title id="contained-modal-title">
-                            Add Inventory Date
+                           Add Inventory Date
                          </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>

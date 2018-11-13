@@ -59,7 +59,7 @@ namespace API.Controllers
         }
     }
 
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public virtual async Task<IActionResult> DeleteItem(int id)
     {
         try
