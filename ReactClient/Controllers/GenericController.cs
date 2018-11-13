@@ -53,7 +53,7 @@ namespace API.Controllers
             await _businessLogicService.Update(item).ConfigureAwait(false);
             return Ok($"{typeof(TBL).Name} have been successfully updated");
         }
-        catch
+        catch (Exception ex)
         {
             return NotFound($"{typeof(TBL).Name} not found");
         }

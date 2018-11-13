@@ -6,6 +6,7 @@ import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
 import { Inventory } from './components/Inventory/Inventory';
 
+
 export default class App extends Component {
   displayName = App.name
 

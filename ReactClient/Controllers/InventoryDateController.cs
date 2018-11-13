@@ -29,7 +29,14 @@ namespace API.Controllers
             try
             {
                 var services = _formulaService.GetAllItems();
-                return Ok(JsonConvert.SerializeObject(services));
+                var options = services.Select(date =>
+                new
+                {
+                    label = date.date,
+                    value = date.id
+                });
+                
+                return Ok(JsonConvert.SerializeObject(options));
             }
             catch (Exception exception)
             {
