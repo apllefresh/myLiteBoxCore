@@ -24,7 +24,8 @@ namespace API
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();            services.AddReact();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddReact();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             var builder = new ContainerBuilder();
@@ -48,8 +49,10 @@ namespace API
 
             app.UseHttpsRedirection();
             app.UseReact(config => { });
-            
-            app.UseDefaultFiles();
+            
+
+            app.UseDefaultFiles();
+
             app.UseStaticFiles();
             app.UseMvc();
         }

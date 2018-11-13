@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLL", "BLL\BLL.csproj", "{D0861D9D-81AF-445F-B043-BA701007AB14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{42E497FB-6D16-42FE-9703-63B1F10D19F4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactClient", "ReactClient\ReactClient.csproj", "{D32B44DD-8472-4F2D-AD6D-DCD55DF004C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{D0861D9D-81AF-445F-B043-BA701007AB14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0861D9D-81AF-445F-B043-BA701007AB14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0861D9D-81AF-445F-B043-BA701007AB14}.Release|Any CPU.Build.0 = Release|Any CPU
-		{42E497FB-6D16-42FE-9703-63B1F10D19F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{42E497FB-6D16-42FE-9703-63B1F10D19F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{42E497FB-6D16-42FE-9703-63B1F10D19F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{42E497FB-6D16-42FE-9703-63B1F10D19F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D32B44DD-8472-4F2D-AD6D-DCD55DF004C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D32B44DD-8472-4F2D-AD6D-DCD55DF004C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D32B44DD-8472-4F2D-AD6D-DCD55DF004C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D32B44DD-8472-4F2D-AD6D-DCD55DF004C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
