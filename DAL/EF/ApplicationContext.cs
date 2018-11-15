@@ -12,7 +12,7 @@ namespace DAL.EF
         public DbSet<Department> Departments { get; set; }
 
         public DbSet<InventoryDate> inventorydate { get; set; }
-        public DbSet<InventoryHead> InventoryHeads { get; set; }
+        public DbSet<InventoryHead> inventoryhead { get; set; }
         public DbSet<InventoryBody> InventoryBodies { get; set; }
         public DbSet<InventoryResult> InventoryResults { get; set; }
 

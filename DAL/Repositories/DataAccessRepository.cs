@@ -31,18 +31,10 @@ namespace DAL.Repositories
             return await _dbSet.FindAsync(id).ConfigureAwait(false) as T;
         }
 
-
-        //public virtual IEnumerable<T> Find(Func<T, Boolean> predicate)
-        //{
-        //    return _dbSet.Where(predicate);
-        //}
-
-        public virtual async Task<IEnumerable<T>> Find(Func<T, Boolean> predicate)
+        public virtual async Task<IReadOnlyCollection<T>> Find(Func<T, Boolean> predicate)
         {
-            var result = _dbSet.Where(predicate);
-
-            return await result.AsQueryable<T>().ToListAsync().ConfigureAwait(false);// ToAsyncEnumerable<IEnumerable<T>>();
-            
+            var result = _dbSet.Where(predicate).ToList();
+            return await result.ToAsyncEnumerable().ToList().ConfigureAwait(false);
         }
 
         public virtual async Task Create(T item)

@@ -10,25 +10,25 @@ using D = DAL.Entities;
 using B = BLL.Entities;
 using BI = BLL.Interfaces;
 
-namespace API.Controllers
+namespace ReactClient.Controllers
 {
-    [Route("api/inventory")]
+    [Route("api/inventoryDate")]
     [ApiController]
     public class InventoryDateController : GenericController<B.InventoryDate, D.InventoryDate>
     {
-        private BI.IInventoryService _formulaService;
+        private BI.IInventoryDateService _dateService;
 
-        public InventoryDateController(BI.IInventoryService formulaService) : base(formulaService)
+        public InventoryDateController(BI.IInventoryDateService dateService) : base(dateService)
         {
-            _formulaService = formulaService;
+            _dateService = dateService;
         }
 
         [HttpGet]
-        public override IActionResult GetAllItems()
+        public override async Task<IActionResult> GetAllItems()
         {
             try
             {
-                var services = _formulaService.GetAllItems();
+                var services = await _dateService.GetAllItems().ConfigureAwait(false);
                 var options = services.Select(date =>
                 new
                 {

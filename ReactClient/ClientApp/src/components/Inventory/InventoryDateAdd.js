@@ -26,7 +26,7 @@ class InventoryDateAdd extends Component {
             "date": this.state.date,
             "dateget2price": this.state.date
         }
-        fetch('api/inventory/',
+        fetch('api/inventoryDate/',
             {
                 method: 'POST',
                 headers: {

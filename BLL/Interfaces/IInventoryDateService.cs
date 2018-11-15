@@ -3,7 +3,7 @@ using D = DAL.Entities;
 
 namespace BLL.Interfaces
 {
-    public interface IInventoryService : IBLLService<B.InventoryDate, D.InventoryDate>
+    public interface IInventoryDateService : IBLLService<B.InventoryDate, D.InventoryDate>
     {
 
     }

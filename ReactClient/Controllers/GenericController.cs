@@ -4,7 +4,7 @@ using BLL.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace API.Controllers
+namespace ReactClient.Controllers
 { 
     public abstract class GenericController<TBL, TDA> : ControllerBase where TBL : class where TDA : class
 {
@@ -16,11 +16,11 @@ namespace API.Controllers
     }
 
     [HttpGet]
-    public virtual IActionResult GetAllItems()
+    public virtual async Task<IActionResult> GetAllItems()
     {
         try
         {
-            var services = _businessLogicService.GetAllItems();
+            var services = await _businessLogicService.GetAllItems().ConfigureAwait(false);
             return Ok(JsonConvert.SerializeObject(services));
         }
         catch (Exception exception)

@@ -24,17 +24,13 @@ namespace BLL.Services
             _mapper = mapper
                       ??
                       throw new ArgumentNullException(nameof(mapper));
-            LoadItems();
         }
 
-        private void LoadItems() => _items = _repository
-            .GetAll()
-            .GetAwaiter()
-            .GetResult()
-            .Select(item => _mapper.Map<TBL>(item))
-            .ToList();
-
-        public virtual IReadOnlyCollection<TBL> GetAllItems() => _items.ToArray();
+        public virtual async Task<IReadOnlyCollection<TBL>> GetAllItems()
+        {
+            var items = await _repository.GetAll().ConfigureAwait(false);
+            return items.Select(item => _mapper.Map<TBL>(item)).ToArray();
+        }
 
         public virtual async Task<TBL> GetItemById(int id)
         {

@@ -14,11 +14,18 @@ namespace BLL.DI
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<InventoryService>()
-                .As<IInventoryService>()
+            builder.RegisterType<InventoryDateService>()
+                .As<IInventoryDateService>()
                 .InstancePerLifetimeScope();
             builder.RegisterType<InventoryDateRepository>()
                  .As<InventoryDateRepository>()
+                 .InstancePerLifetimeScope();
+
+            builder.RegisterType<InventoryHeadService>()
+                .As<IInventoryHeadService>()
+                .InstancePerLifetimeScope();
+            builder.RegisterType<InventoryHeadRepository>()
+                 .As<InventoryHeadRepository>()
                  .InstancePerLifetimeScope();
 
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();

@@ -10,7 +10,7 @@ namespace BLL.Entities
         public int CreatedBy { get; set; }
         public int Number { get; set; }
 
-        public int InventoryResultId { get; set; }
+        public int InventoryDateId { get; set; }
         IEnumerable<InventoryBody> inventoryBodies { get; set; }
     }
 }
