@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using BLL.Interfaces;
-using DAL.Interfaces;
-using DAL.Repositories;
+using InventoryDAL.Interfaces;
+using InventoryDAL.Repositories;
 
 namespace BLL.Services
 {
@@ -14,8 +14,7 @@ namespace BLL.Services
     {
         private readonly IMapper _mapper;
         private readonly IRepository<TDA> _repository;
-        private IEnumerable<TBL> _items;
-
+        
         protected BLLService(IRepository<TDA> repository, IMapper mapper)
         {
             _repository = repository

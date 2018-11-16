@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AssemblyName>Inventory.DAL</AssemblyName>
+    <RootNamespace>Inventory.DAL</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.8.1" />
+    <PackageReference Include="AutoMapper" Version="7.0.1" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Inventory.DAL.Contract">
+      <HintPath>..\Inventory.DAL.Contract\bin\Debug\netcoreapp2.1\Inventory.DAL.Contract.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

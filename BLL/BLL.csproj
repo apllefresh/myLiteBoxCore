@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="DAL">
-      <HintPath>..\DAL\bin\Debug\netcoreapp2.1\DAL.dll</HintPath>
+    <Reference Include="InventoryDAL">
+      <HintPath>..\InventoryDAL\bin\Debug\netcoreapp2.1\InventoryDAL.dll</HintPath>
     </Reference>
   </ItemGroup>
 

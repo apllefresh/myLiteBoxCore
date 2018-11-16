@@ -1,9 +1,9 @@
 ﻿using B = BLL.Entities;
 using BI = BLL.Interfaces;
-using D = DAL.Entities;
-using DAL.Interfaces;
+using D = InventoryDAL.Entities;
+using InventoryDAL.Interfaces;
 using AutoMapper;
-using DAL.Repositories;
+using InventoryDAL.Repositories;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 

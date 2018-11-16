@@ -1,5 +1,5 @@
 ﻿using B = BLL.Entities;
-using D = DAL.Entities;
+using D = InventoryDAL.Entities;
 
 namespace BLL.Interfaces
 {

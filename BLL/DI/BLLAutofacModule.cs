@@ -5,8 +5,8 @@ using BLL.Interfaces;
 using BLL.Services;
 using Autofac;
 using AutoMapper;
-using DAL.Interfaces;
-using DAL.Repositories;
+using InventoryDAL.Interfaces;
+using InventoryDAL.Repositories;
 
 namespace BLL.DI
 {
@@ -26,6 +26,13 @@ namespace BLL.DI
                 .InstancePerLifetimeScope();
             builder.RegisterType<InventoryHeadRepository>()
                  .As<InventoryHeadRepository>()
+                 .InstancePerLifetimeScope();
+
+            builder.RegisterType<InventoryBodyService>()
+                .As<IInventoryBodyService>()
+                .InstancePerLifetimeScope();
+            builder.RegisterType<InventoryBodyRepository>()
+                 .As<InventoryBodyRepository>()
                  .InstancePerLifetimeScope();
 
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();

@@ -1,8 +1,10 @@
 ﻿import React, { Component } from 'react';
 import Select from 'react-select'
 import 'react-dropdown/style.css'
-import InventoryDateAdd  from './InventoryDateAdd';
+import InventoryDateAdd from './InventoryDateAdd';
 import { Button } from 'react-bootstrap'
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+
 
 export class Inventory extends Component {
     displayName = Inventory.name
@@ -11,7 +13,8 @@ export class Inventory extends Component {
         super(props);
         this.state = {
             dateOptions: this.getDateOptions(), dateLoading: true, enableAddDateForm: false, selectDateId: 0,
-            headOptions: [], headLoading: true, enableAddHeadForm: false, selectHeadId: 0
+            headOptions: [], headLoading: true, enableAddHeadForm: false, selectHeadId: 0,
+            bodyOptions: [], bodyLoading: true
         };
         
         this.dateChange = this.dateChange.bind(this);
@@ -60,7 +63,7 @@ export class Inventory extends Component {
     }
 
     headChange = (v) => {
-        this.setState({ selectHeadId: v.value });
+        this.setState({ selectHeadId: v.value, bodyOptions: this.getBodyOptions(v.value) });
     }
 
     deleteHead() {
@@ -76,40 +79,54 @@ export class Inventory extends Component {
     }
     //////////////
 
+
+    getBodyOptions(id) {
+        fetch('api/inventoryBody/' + id)
+            .then(response => response.json())
+            .then(data => {
+                this.setState({ bodyOptions: data, bodyLoading: false });
+            });
+
+    }
+
+    /////////////////////////
+
     render() {
-        let dateContents = this.state.dateLoading
-            ? <p><em>Loading dates...</em></p>
-            : <div>
-                <Select options={this.state.dateOptions} onChange={this.dateChange} placeholder="Select an option"  />
-            </div>;
-
-        let headContents = this.state.headLoading
-            ? <p><em>Loading heads...</em></p>
-            : <div>
-                <Select options={this.state.headOptions} onChange={this.headChange} placeholder="Select an option" />
-            </div>;
-
         return (
             <div>
-                <h1>Weather forecast</h1>
+                <h1>Inventory</h1>
                 <p>This component demonstrates fetching data from the server.</p>
-                {dateContents}
-                <Button onClick={() => this.deleteDate()}       >
-                    Delete Inventory Date
-                </Button>
-                <InventoryDateAdd isEdit={false} onExited={() => this.getDateOptions()} />
+                {
+                    this.state.dateLoading
+                    ? <p><em>Loading dates...</em></p>
+                        : <div>
+                            <Select options={this.state.dateOptions} onChange={this.dateChange} placeholder="Select an option" />
+                            <Button onClick={() => this.deleteDate()} > Delete Inventory Date </Button>
+                            <InventoryDateAdd isEdit={false} onExited={() => this.getDateOptions()} />
+                        </div>
+                }
+                
 
-                {this.state.headLoading
-                    ? <p><em>Loading heads...</em></p>
+                {
+                    this.state.headLoading
+                    ? <p><em>...</em></p>
                     : <div>
                         <Select options={this.state.headOptions} onChange={this.headChange} placeholder="Select an option" />
-                    </div>
+                        <Button onClick={() => this.deleteHead()}> Delete Inventory Head </Button>
+                     </div>
                 }
-               
-                <Button onClick={() => this.deleteHead()}       >
-                    Delete Inventory Head
-                </Button>
-                <InventoryDateAdd  onExited={() => this.getHeadOptions()} />
+
+                { 
+                    this.state.bodyLoading ?
+                        <p><em>dd</em></p>
+                        : <BootstrapTable data={this.state.bodyOptions} striped hover>
+                            <TableHeaderColumn isKey dataField='id' >Product ID</TableHeaderColumn>
+                            <TableHeaderColumn dataField='price'>Row Number</TableHeaderColumn>
+                            <TableHeaderColumn dataField='name'>Product Name</TableHeaderColumn>
+                            <TableHeaderColumn dataField='price'>Product Price</TableHeaderColumn>
+                            <TableHeaderColumn dataField='price'>Product Count</TableHeaderColumn>
+                        </BootstrapTable>
+                }
 
             </div>
         );

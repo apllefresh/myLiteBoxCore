@@ -2,7 +2,7 @@ using System;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using BLL.DI;
-using DAL.DI;
+using InventoryDAL.DI;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;

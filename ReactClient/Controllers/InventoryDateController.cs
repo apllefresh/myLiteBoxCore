@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using DAL.Repositories;
-using D = DAL.Entities;
+using InventoryDAL.Repositories;
+using D = InventoryDAL.Entities;
 using B = BLL.Entities;
 using BI = BLL.Interfaces;
 

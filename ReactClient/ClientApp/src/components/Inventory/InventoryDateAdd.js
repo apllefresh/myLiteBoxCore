@@ -43,7 +43,7 @@ class InventoryDateAdd extends Component {
             <div className="modal-container" style={{ height: 200 }}>
                 <Button
                     bsStyle="primary"
-                    bsSize="large"
+                   
                     onClick={() => this.setState({ show: true })}>
                    Add Inventory Date
                 </Button>

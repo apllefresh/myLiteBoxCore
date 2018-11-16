@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using D = DAL.Entities;
+using D = InventoryDAL.Entities;
 using B = BLL.Entities;
 
 namespace BLL.DI

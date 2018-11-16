@@ -53,7 +53,7 @@ namespace ReactClient.Controllers
             await _businessLogicService.Update(item).ConfigureAwait(false);
             return Ok($"{typeof(TBL).Name} have been successfully updated");
         }
-        catch (Exception ex)
+        catch 
         {
             return NotFound($"{typeof(TBL).Name} not found");
         }
