@@ -1,17 +1,15 @@
-﻿using B = BLL.Entities;
-using BI = BLL.Interfaces;
-using D = Inventory.DAL.Contract.Models;
+﻿using AutoMapper;
 using Inventory.DAL.Contract.Interfaces;
-using InventoryDAL.Interfaces;
-using AutoMapper;
-using InventoryDAL.Repositories;
-using System.Collections.Generic;
+using DA = Inventory.DAL.Contract.Models;
+using BL = Inventory.BLL.Contract.Models;
+using BLI = Inventory.BLL.Contract.Interfaces;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using System.Linq;
 
-namespace BLL.Services
+namespace Inventory.BLL.Services
 {
-    public class InventoryBodyService : BLLService<B.InventoryBody, D.InventoryBody>, BI.IInventoryBodyService
+    public class InventoryBodyService : BusinessLogicService<BL.InventoryBody, DA.InventoryBody>, BLI.IInventoryBodyService
     {
         private IInventoryBodyRepository _repository;
         private IMapper _mapper;
@@ -23,10 +21,10 @@ namespace BLL.Services
         }
 
 
-        public async Task<IReadOnlyCollection<B.InventoryBody>> GetAllItems(int inventoryBodyId)
+        public async Task<IReadOnlyCollection<BL.InventoryBody>> GetAllItems(int inventoryBodyId)
         {
             var items = await _repository.Find(t => t.InventoryHeadId == inventoryBodyId).ConfigureAwait(false);
-            return items.Select(item => _mapper.Map<B.InventoryBody>(item)).ToArray();
+            return items.Select(item => _mapper.Map<BL.InventoryBody>(item)).ToArray();
         }
     }
 }

@@ -1,16 +1,15 @@
-﻿using B = BLL.Entities;
-using BI = BLL.Interfaces;
-using D = Inventory.DAL.Contract.Models;
+﻿using AutoMapper;
 using Inventory.DAL.Contract.Interfaces;
-using AutoMapper;
-using InventoryDAL.Repositories;
-using System.Collections.Generic;
+using DA = Inventory.DAL.Contract.Models;
+using BL = Inventory.BLL.Contract.Models;
+using BLI = Inventory.BLL.Contract.Interfaces;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using System.Linq;
 
-namespace BLL.Services
+namespace Inventory.BLL.Services
 {
-    public class InventoryHeadService : BLLService<B.InventoryHead, D.InventoryHead>, BI.IInventoryHeadService
+    public class InventoryHeadService : BusinessLogicService<BL.InventoryHead, DA.InventoryHead>, BLI.IInventoryHeadService
     {
         private IInventoryHeadRepository _repository;
         private IMapper _mapper;
@@ -22,14 +21,10 @@ namespace BLL.Services
         }
 
 
-        public async Task<IReadOnlyCollection<B.InventoryHead>> GetAllItems(int inventoryDateId)
+        public async Task<IReadOnlyCollection<BL.InventoryHead>> GetAllItems(int inventoryDateId)
         {
             var items = await _repository.Find(t => t.InventoryDateId == inventoryDateId).ConfigureAwait(false);
-            return items.Select(item => _mapper.Map<B.InventoryHead>(item)).ToArray();
+            return items.Select(item => _mapper.Map<BL.InventoryHead>(item)).ToArray();
         }
     }
-    /*
-    
-    }
-    */
 }

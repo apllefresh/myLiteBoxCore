@@ -3,25 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryDAL", "InventoryDAL\InventoryDAL.csproj", "{C33F5DD0-3137-40BA-86BF-13DD084AF2DA}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLL", "BLL\BLL.csproj", "{D0861D9D-81AF-445F-B043-BA701007AB14}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReactClient", "ReactClient\ReactClient.csproj", "{D32B44DD-8472-4F2D-AD6D-DCD55DF004C1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{50EDA667-5B5F-4C54-8165-0CF6A2EC033C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Inventory", "Inventory", "{E56CEA1F-CDD4-4C6E-B236-F3B6BB71B98B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DataAccess\Inventory.DAL\DAL.csproj", "{6366B1B3-475C-4502-96C5-A58FD09FEE45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inventory.DAL", "DataAccess\Inventory\DAL\Inventory.DAL.csproj", "{6366B1B3-475C-4502-96C5-A58FD09FEE45}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL.Contract", "DataAccess\Inventory.DAL.Contract\DAL.Contract.csproj", "{826B8DAC-C980-4E9C-8122-7211D2BC4C83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inventory.DAL.Contract", "DataAccess\Inventory\DAL.Contract\Inventory.DAL.Contract.csproj", "{826B8DAC-C980-4E9C-8122-7211D2BC4C83}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL.DI", "DataAccess\Inventory.DAL.DI\DAL.DI.csproj", "{44D4BAC7-0B7F-4616-97AF-40FE9428E918}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inventory.DAL.DI", "DataAccess\Inventory\DAL.DI\Inventory.DAL.DI.csproj", "{44D4BAC7-0B7F-4616-97AF-40FE9428E918}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLogic", "BusinessLogic", "{D858F595-D722-4E89-A43B-8529ECF466D0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Inventory", "Inventory", "{2C6CCB6A-905A-4E1F-9FE0-015B0C89B115}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inventory.BLL", "BusinessLogic\Inventory\BLL\Inventory.BLL.csproj", "{2D615981-708C-490E-8094-45E30F1E50E3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inventory.BLL.Contract", "BusinessLogic\Inventory\BLL.Contract\Inventory.BLL.Contract.csproj", "{C0384408-01B4-48A2-8042-F52C99DC27F9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inventory.BLL.DI", "BusinessLogic\Inventory\BLL.DI\Inventory.BLL.DI.csproj", "{90AFB53F-135B-4A63-89D5-BC10E725E779}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,14 +31,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C33F5DD0-3137-40BA-86BF-13DD084AF2DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C33F5DD0-3137-40BA-86BF-13DD084AF2DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C33F5DD0-3137-40BA-86BF-13DD084AF2DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C33F5DD0-3137-40BA-86BF-13DD084AF2DA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D0861D9D-81AF-445F-B043-BA701007AB14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D0861D9D-81AF-445F-B043-BA701007AB14}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D0861D9D-81AF-445F-B043-BA701007AB14}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D0861D9D-81AF-445F-B043-BA701007AB14}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D32B44DD-8472-4F2D-AD6D-DCD55DF004C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D32B44DD-8472-4F2D-AD6D-DCD55DF004C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D32B44DD-8472-4F2D-AD6D-DCD55DF004C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -53,6 +47,18 @@ Global
 		{44D4BAC7-0B7F-4616-97AF-40FE9428E918}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44D4BAC7-0B7F-4616-97AF-40FE9428E918}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44D4BAC7-0B7F-4616-97AF-40FE9428E918}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D615981-708C-490E-8094-45E30F1E50E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D615981-708C-490E-8094-45E30F1E50E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D615981-708C-490E-8094-45E30F1E50E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D615981-708C-490E-8094-45E30F1E50E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0384408-01B4-48A2-8042-F52C99DC27F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0384408-01B4-48A2-8042-F52C99DC27F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0384408-01B4-48A2-8042-F52C99DC27F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0384408-01B4-48A2-8042-F52C99DC27F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90AFB53F-135B-4A63-89D5-BC10E725E779}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90AFB53F-135B-4A63-89D5-BC10E725E779}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90AFB53F-135B-4A63-89D5-BC10E725E779}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90AFB53F-135B-4A63-89D5-BC10E725E779}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +69,9 @@ Global
 		{826B8DAC-C980-4E9C-8122-7211D2BC4C83} = {E56CEA1F-CDD4-4C6E-B236-F3B6BB71B98B}
 		{44D4BAC7-0B7F-4616-97AF-40FE9428E918} = {E56CEA1F-CDD4-4C6E-B236-F3B6BB71B98B}
 		{2C6CCB6A-905A-4E1F-9FE0-015B0C89B115} = {D858F595-D722-4E89-A43B-8529ECF466D0}
+		{2D615981-708C-490E-8094-45E30F1E50E3} = {2C6CCB6A-905A-4E1F-9FE0-015B0C89B115}
+		{C0384408-01B4-48A2-8042-F52C99DC27F9} = {2C6CCB6A-905A-4E1F-9FE0-015B0C89B115}
+		{90AFB53F-135B-4A63-89D5-BC10E725E779} = {2C6CCB6A-905A-4E1F-9FE0-015B0C89B115}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {819CFC39-4D72-4F50-8A10-F7169FCE5AB9}

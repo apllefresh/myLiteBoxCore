@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using BLL.Interfaces;
+using Inventory.BLL.Contract.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -8,9 +8,9 @@ namespace ReactClient.Controllers
 { 
     public abstract class GenericController<TBL, TDA> : ControllerBase where TBL : class where TDA : class
 {
-    private readonly IBLLService<TBL, TDA> _businessLogicService;
+    private readonly IBusinessLogicService<TBL, TDA> _businessLogicService;
 
-    protected GenericController(IBLLService<TBL, TDA> service)
+    protected GenericController(IBusinessLogicService<TBL, TDA> service)
     {
         _businessLogicService = service;
     }

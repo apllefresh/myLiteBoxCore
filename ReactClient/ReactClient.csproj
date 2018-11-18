@@ -12,9 +12,12 @@
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.8.1" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.3.1" />
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.4" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.1.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,12 +27,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BLL\BLL.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="InventoryDAL">
-      <HintPath>..\InventoryDAL\bin\Debug\netcoreapp2.1\InventoryDAL.dll</HintPath>
+    <Reference Include="Inventory.BLL.Contract">
+      <HintPath>..\BusinessLogic\Inventory\BLL.Contract\bin\Debug\netcoreapp2.1\Inventory.BLL.Contract.dll</HintPath>
+    </Reference>
+    <Reference Include="Inventory.BLL.DI">
+      <HintPath>..\BusinessLogic\Inventory\BLL.DI\bin\Debug\netcoreapp2.1\Inventory.BLL.DI.dll</HintPath>
+    </Reference>
+    <Reference Include="Inventory.DAL.Contract">
+      <HintPath>..\DataAccess\Inventory\DAL.DI\bin\Debug\netcoreapp2.1\Inventory.DAL.Contract.dll</HintPath>
+    </Reference>
+    <Reference Include="Inventory.DAL.DI">
+      <HintPath>..\DataAccess\Inventory\DAL.DI\bin\Debug\netcoreapp2.1\Inventory.DAL.DI.dll</HintPath>
     </Reference>
   </ItemGroup>
 

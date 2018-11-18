@@ -2,13 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <AssemblyName>InventoryDAL</AssemblyName>
-    <RootNamespace>InventoryDAL</RootNamespace>
+    <AssemblyName>Inventory.DAL.Contract</AssemblyName>
+    <RootNamespace>Inventory.DAL.Contract</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="4.8.1" />
-    <PackageReference Include="AutoMapper" Version="8.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.4" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.1.2" />
   </ItemGroup>

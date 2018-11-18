@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using InventoryDAL.Repositories;
-using D = InventoryDAL.Entities;
-using B = BLL.Entities;
-using BI = BLL.Interfaces;
+//using Inventory.DAL.Repositories;
+using D = Inventory.DAL.Contract.Models;
+using B = Inventory.BLL.Contract.Models;
+using BI = Inventory.BLL.Contract.Interfaces;
 
 namespace ReactClient.Controllers
 {
@@ -32,8 +32,8 @@ namespace ReactClient.Controllers
                 var options = services.Select(date =>
                 new
                 {
-                    label = date.date,
-                    value = date.id
+                    label = date.Date,
+                    value = date.Id
                 });
                 
                 return Ok(JsonConvert.SerializeObject(options));

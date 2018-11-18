@@ -3,9 +3,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using D = InventoryDAL.Entities;
-using B = BLL.Entities;
-using BI = BLL.Interfaces;
+using D = Inventory.DAL.Contract.Models;
+using B = Inventory.BLL.Contract.Models;
+using BI = Inventory.BLL.Contract.Interfaces;
 
 namespace ReactClient.Controllers
 {

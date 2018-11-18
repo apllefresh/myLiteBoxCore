@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <AssemblyName>InventoryDAL</AssemblyName>
-    <RootNamespace>InventoryDAL</RootNamespace>
+    <AssemblyName>Inventory.DAL.DI</AssemblyName>
+    <RootNamespace>Inventory.DAL.DI</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,6 +11,15 @@
     <PackageReference Include="AutoMapper" Version="8.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.4" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Inventory.DAL">
+      <HintPath>..\DAL\bin\Debug\netcoreapp2.1\Inventory.DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="Inventory.DAL.Contract">
+      <HintPath>..\DAL.Contract\bin\Debug\netcoreapp2.1\Inventory.DAL.Contract.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

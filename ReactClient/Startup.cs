@@ -1,8 +1,8 @@
 using System;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using BLL.DI;
-using InventoryDAL.DI;
+using Inventory.BLL.DI;
+using Inventory.DAL.DI;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -35,8 +35,10 @@ namespace ReactClient
             });
 
             var builder = new ContainerBuilder();
-            builder.RegisterModule(new DALAutofacModule());
-            builder.RegisterModule(new BLLAutofacModule());
+            
+            
+            builder.RegisterModule(new InventoryDALAutofacModule());
+            builder.RegisterModule(new InventoryBLLAutofacModule());
             builder.Populate(services);
             var container = builder.Build();
             return new AutofacServiceProvider(container);

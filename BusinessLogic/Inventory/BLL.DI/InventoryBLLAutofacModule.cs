@@ -1,38 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-
-using BLL.Interfaces;
-using BLL.Services;
 using Autofac;
 using AutoMapper;
-using InventoryDAL.Repositories;
+using Inventory.BLL.Contract.Interfaces;
+using Inventory.BLL.Services;
 
-namespace BLL.DI
+namespace Inventory.BLL.DI
 {
-    public class BLLAutofacModule : Module
+    public class InventoryBLLAutofacModule : Module
     {
+
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<InventoryDateService>()
-                .As<IInventoryDateService>()
-                .InstancePerLifetimeScope();
-            builder.RegisterType<InventoryDateRepository>()
-                 .As<InventoryDateRepository>()
-                 .InstancePerLifetimeScope();
-
             builder.RegisterType<InventoryHeadService>()
                 .As<IInventoryHeadService>()
                 .InstancePerLifetimeScope();
-            builder.RegisterType<InventoryHeadRepository>()
-                 .As<InventoryHeadRepository>()
-                 .InstancePerLifetimeScope();
-
             builder.RegisterType<InventoryBodyService>()
                 .As<IInventoryBodyService>()
                 .InstancePerLifetimeScope();
-            builder.RegisterType<InventoryBodyRepository>()
-                 .As<InventoryBodyRepository>()
-                 .InstancePerLifetimeScope();
+            builder.RegisterType<InventoryDateService>()
+                .As<IInventoryDateService>()
+                .InstancePerLifetimeScope();
 
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
             builder.RegisterAssemblyTypes(assemblies)
@@ -51,5 +39,6 @@ namespace BLL.DI
                 .As<IMapper>()
                 .InstancePerLifetimeScope();
         }
+       
     }
 }
