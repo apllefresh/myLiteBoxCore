@@ -1,5 +1,0 @@
-﻿CREATE TABLE Department
-(
-    Id SERIAL PRIMARY KEY,
-	Name VARCHAR(50)
-)
