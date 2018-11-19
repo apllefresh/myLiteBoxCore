@@ -21,6 +21,15 @@ namespace Inventory.BLL.DI
             builder.RegisterType<InventoryDateService>()
                 .As<IInventoryDateService>()
                 .InstancePerLifetimeScope();
+            builder.RegisterType<InventoryResultService>()
+                .As<IInventoryResultService>()
+                .InstancePerLifetimeScope();
+            builder.RegisterType<InventorySpaceService>()
+                .As<IInventorySpaceService>()
+                .InstancePerLifetimeScope();
+            builder.RegisterType<InventoryDateToSpaceMapService>()
+                .As<IInventoryDateToSpaceMapService>()
+                .InstancePerLifetimeScope();
 
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
             builder.RegisterAssemblyTypes(assemblies)
@@ -39,6 +48,6 @@ namespace Inventory.BLL.DI
                 .As<IMapper>()
                 .InstancePerLifetimeScope();
         }
-       
+
     }
 }

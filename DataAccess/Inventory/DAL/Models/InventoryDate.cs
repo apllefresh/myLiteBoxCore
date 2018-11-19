@@ -11,8 +11,5 @@ namespace Inventory.DAL.Models
 
         [Column(name: "date")]
         public DateTime Date { get; set; }
-
-        [Column(name: "dateget2price")]
-        public DateTime DateGet2Price { get; set; }
     }
 }

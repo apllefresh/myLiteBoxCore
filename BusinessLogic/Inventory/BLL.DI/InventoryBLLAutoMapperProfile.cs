@@ -18,6 +18,11 @@ namespace Inventory.BLL.DI
                 .ReverseMap();
             CreateMap<DAContractModels.InventoryResult, BLContractModels.InventoryResult>()
                 .ReverseMap();
+            CreateMap<DAContractModels.InventorySpace, BLContractModels.InventorySpace>()
+                .ReverseMap();
+            CreateMap<DAContractModels.InventoryDateToSpaceMap, BLContractModels.InventoryDateToSpaceMap>()
+                .ReverseMap();
+
 
             CreateMap<BLBaseModels.InventoryBody, BLContractModels.InventoryBody>()
                 .ReverseMap();
@@ -27,6 +32,11 @@ namespace Inventory.BLL.DI
                 .ReverseMap();
             CreateMap<BLBaseModels.InventoryResult, BLContractModels.InventoryResult>()
                 .ReverseMap();
+            CreateMap<BLBaseModels.InventorySpace, BLContractModels.InventorySpace>()
+                .ReverseMap();
+            CreateMap<BLBaseModels.InventoryDateToSpaceMap, BLContractModels.InventoryDateToSpaceMap>()
+                .ReverseMap();
+
 
             CreateMap<BLBaseModels.InventoryBody, DAContractModels.InventoryBody>()
                 .ReverseMap();
@@ -35,6 +45,10 @@ namespace Inventory.BLL.DI
             CreateMap<BLBaseModels.InventoryHead, DAContractModels.InventoryHead>()
                 .ReverseMap();
             CreateMap<BLBaseModels.InventoryResult, DAContractModels.InventoryResult>()
+                .ReverseMap();
+            CreateMap<BLBaseModels.InventorySpace, DAContractModels.InventorySpace>()
+                .ReverseMap();
+            CreateMap<BLBaseModels.InventoryDateToSpaceMap, DAContractModels.InventoryDateToSpaceMap>()
                 .ReverseMap();
         }
     }

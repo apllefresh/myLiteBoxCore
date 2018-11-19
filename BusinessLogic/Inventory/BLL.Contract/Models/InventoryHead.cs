@@ -9,6 +9,9 @@ namespace Inventory.BLL.Contract.Models
         public int CreatedBy { get; set; }
         public int Number { get; set; }
 
+        public int PersonFromWarehouseId { get; set; }
+        public int PersonFromOfficeId { get; set; }
+        public int InventorySpaceId { get; set; }
         public int InventoryDateId { get; set; }
     }
 }

@@ -16,6 +16,10 @@ namespace DAL.DI
                     .ReverseMap();
             CreateMap<BaseModels.InventoryResult, ContractModels.InventoryResult>()
                     .ReverseMap();
+            CreateMap<BaseModels.InventorySpace, ContractModels.InventorySpace>()
+                    .ReverseMap();
+            CreateMap<BaseModels.InventoryDateToSpaceMap, ContractModels.InventoryDateToSpaceMap>()
+                    .ReverseMap();
         }
     }
 }

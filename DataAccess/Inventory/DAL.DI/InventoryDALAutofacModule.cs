@@ -24,7 +24,13 @@ namespace Inventory.DAL.DI
             builder.RegisterType<InventoryResultRepository>()
                 .As<IInventoryResultRepository>()
                 .InstancePerLifetimeScope();
-           
+            builder.RegisterType<InventorySpaceRepository>()
+                 .As<IInventorySpaceRepository>()
+                 .InstancePerLifetimeScope();
+            builder.RegisterType<InventoryDateToSpaceMapRepository>()
+                .As<IInventoryDateToSpaceMapRepository>()
+                .InstancePerLifetimeScope();
+
             builder.RegisterType<DataAccessContext>()
                 .As<DataAccessContext>()
                 .InstancePerLifetimeScope();

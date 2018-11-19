@@ -11,6 +11,8 @@ namespace Inventory.DAL.EF
         public DbSet<InventoryHead> InventoryHeads { get; set; }
         public DbSet<InventoryBody> InventoryBody { get; set; }
         public DbSet<InventoryResult> InventoryResult { get; set; }
+        public DbSet<InventorySpace> InventorySpace { get; set; }
+        public DbSet<InventoryDateToSpaceMap> InventoryDateToSpaceMap { get; set; }
 
         public string ConnectionString { get; }
 
@@ -25,3 +27,4 @@ namespace Inventory.DAL.EF
         }
     }
 }
+
