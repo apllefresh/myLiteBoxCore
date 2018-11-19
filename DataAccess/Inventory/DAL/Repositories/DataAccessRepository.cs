@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace Inventory.DAL.Repositories
 {
@@ -57,5 +58,23 @@ namespace Inventory.DAL.Repositories
             await _context.SaveChangesAsync().ConfigureAwait(false);
         }
 
+        public virtual async Task<IReadOnlyCollection<T>> GetWithInclude(params Expression<Func<T, object>>[] includeProperties)
+        {
+            return await Include(includeProperties).ToListAsync().ConfigureAwait(false);
+        }
+
+        public virtual async Task<IReadOnlyCollection<T>> GetWithInclude(Func<T, bool> predicate,
+            params Expression<Func<T, object>>[] includeProperties)
+        {
+            var query = Include(includeProperties).Where(predicate);
+            return await query.ToAsyncEnumerable().ToList().ConfigureAwait(false); 
+        }
+
+        private IQueryable<T> Include(params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> query = _dbSet.AsNoTracking();
+            return includeProperties
+                .Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
+        }
     }
 }

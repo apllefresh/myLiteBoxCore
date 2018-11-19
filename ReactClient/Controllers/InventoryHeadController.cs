@@ -14,10 +14,12 @@ namespace ReactClient.Controllers
     public class InventoryHeadController : GenericController<B.InventoryHead, D.InventoryHead>
     {
         private BI.IInventoryHeadService _headService;
+        private BI.IInventorySpaceService _spaceService;
 
-        public InventoryHeadController(BI.IInventoryHeadService headService) : base(headService)
+        public InventoryHeadController(BI.IInventoryHeadService headService, BI.IInventorySpaceService spaceService) : base(headService)
         {
             _headService = headService;
+            _spaceService = spaceService;
         }
 
         [HttpGet("{id}")]
@@ -25,29 +27,8 @@ namespace ReactClient.Controllers
         {
             try
             {
-                var services = await _headService.GetAllItems(id).ConfigureAwait(false);
-                
-                return Ok(JsonConvert.SerializeObject(services));
-            }
-            catch (Exception exception)
-            {
-                return StatusCode(500, exception.Message);
-            }
-        }
-
-        [Route("getColumns")]
-        public IActionResult GetColumns()
-        {
-            try
-            {
-                var columns = new
-                {
-                    Header = "number",
-                    accessor = "number",
-                    type = "text"
-                };
-
-                return  Ok(JsonConvert.SerializeObject(columns));
+                var heads = await _headService.GetAllItems(id).ConfigureAwait(false);
+                return Ok(JsonConvert.SerializeObject(heads));
             }
             catch (Exception exception)
             {

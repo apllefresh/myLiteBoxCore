@@ -13,5 +13,10 @@ namespace Inventory.BLL.Contract.Models
         public int PersonFromOfficeId { get; set; }
         public int InventorySpaceId { get; set; }
         public int InventoryDateId { get; set; }
+
+        public string PersonFromWarehouseName { get; set; }
+        public string PersonFromOfficeName { get; set; }
+        public string InventorySpaceName { get; set; }
+
     }
 }

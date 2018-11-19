@@ -94,12 +94,10 @@ export class Inventory extends Component {
                         <p><em>dd</em></p>
                         : <BootstrapTable data={this.state.headData} striped hover>
                             <TableHeaderColumn dataField='Id' isKey hidden >Product ID</TableHeaderColumn>
-                            <TableHeaderColumn dataField='CreatedOn' hidden>CreatedOn</TableHeaderColumn>
-                            <TableHeaderColumn dataField='CreatedBy' hidden>CreatedBy</TableHeaderColumn>
                             <TableHeaderColumn dataField='Number'>Number</TableHeaderColumn>
-                            <TableHeaderColumn dataField='InventorySpaceId'>InventorySpaceId</TableHeaderColumn>
-                            <TableHeaderColumn dataField='PersonFromWarehouseId'>PersonFromWarehouseId</TableHeaderColumn>
-                            <TableHeaderColumn dataField='PersonFromOfficeId'>PersonFromOfficeId</TableHeaderColumn>
+                            <TableHeaderColumn dataField='InventorySpaceName'>InventorySpaceId</TableHeaderColumn>
+                            <TableHeaderColumn dataField='PersonFromWarehouseName'>PersonFromWarehouseId</TableHeaderColumn>
+                            <TableHeaderColumn dataField='PersonFromOfficeName'>PersonFromOfficeId</TableHeaderColumn>
                             
                             <TableHeaderColumn dataField="button" dataFormat={this.buttonFormatter.bind(this)}>Buttons</TableHeaderColumn>
                         </BootstrapTable>
