@@ -16,7 +16,7 @@ namespace Inventory.DAL.EF
 
         public string ConnectionString { get; }
 
-        public DataAccessContext(IConfiguration configuration) => ConnectionString = configuration.GetSection("ConnectionStrings:DefaultConnection")
+        public DataAccessContext(IConfiguration configuration) => ConnectionString = configuration.GetSection("ConnectionStrings:InventoryConnection")
            .Value;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

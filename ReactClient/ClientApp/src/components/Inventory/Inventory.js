@@ -42,13 +42,17 @@ export class Inventory extends Component {
 
     }
 
-    viewAct()
+    addAct() {
+        var win = window.open("/inventoryAct/add", '_blank');
+        win.focus();
+    }
+    viewAct(id)
     {
-        var win = window.open("/inventoryAct/?mode=add", '_blank');
+        var win = window.open("/inventoryAct/view/"+id, '_blank');
         win.focus();
     }
     editAct(id) {
-        var win = window.open("/inventoryAct/?mode=add&id="+id, '_blank');
+        var win = window.open("/inventoryAct/edit/"+id, '_blank');
         win.focus();
     }
     deleteAct(id) {
@@ -58,7 +62,7 @@ export class Inventory extends Component {
     buttonFormatter(cell, row) {
          return (<ButtonToolbar>
              <ButtonGroup>
-                 <Button onClick={this.viewAct}>
+                 <Button onClick={()=>this.viewAct(row.Id)}>
                      <Glyphicon glyph="search" />
                  </Button>
                  <Button onClick={()=>this.editAct(row.Id)}>

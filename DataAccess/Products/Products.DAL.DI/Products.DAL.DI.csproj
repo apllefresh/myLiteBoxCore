@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.8.1" />
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Products.DAL">
+      <HintPath>..\Products.DAL\bin\Debug\netcoreapp2.1\Products.DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="Products.DAL.Contract">
+      <HintPath>..\Products.DAL.Contract\bin\Debug\netcoreapp2.1\Products.DAL.Contract.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

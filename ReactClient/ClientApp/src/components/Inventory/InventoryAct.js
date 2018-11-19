@@ -1,78 +1,51 @@
 ﻿import React, { Component } from 'react';
-import { Button, Modal } from 'react-bootstrap'
-import DatePicker from 'react-date-picker';
+import Select from 'react-select'
+import 'react-dropdown/style.css'
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 
 export class InventoryAct extends Component {
     constructor(props, context) {
         super(props, context);
-        
-        this.handleHide = this.handleHide.bind(this);
-        this.addDate = this.addDate.bind(this);
-
         this.state = {
-            show: false,
-            date: new Date(),
+            mode: this.props.match.params.mode, id: this.props.match.params.id
+            , dateOptions: this.getDateOptions(), selectDateId:0
         };
+       
+
+        this.getDateOptions = this.getDateOptions.bind(this);
+        this.dateChange = this.dateChange.bind(this);
+       
     }
 
-    handleHide() {
-        this.setState({ show: false });
-    }
+   
 
-    onChange = date => this.setState({ date })
-
-    addDate() {
-        var newDate = {
-            "date": this.state.date,
-            "dateget2price": this.state.date
-        }
-        fetch('api/inventoryDate/',
+    getDateOptions() {
+        fetch('api/inventorySpace/')
+            .then(response => response.json())
+            .then(data =>
             {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(newDate)
+                var tdata = [];
+                data.map((t, index) => tdata.push({ label: t.Name, value: t.Id }));
+                this.setState({ dateOptions: tdata, dateLoading: false });
             });
-        this.setState({ show: false });
-    }
 
+    }
+    dateChange = (v) => {
+        this.setState({ selectDateId: v.value });
+    }
+   
     render() {
         return (
-            <div className="modal-container" style={{ height: 200 }}>
-                <p>Age: {new URLSearchParams(this.props.location.search).get("mode")}</p>
-                <p> {this.props.match.params.id} </p>
-                <Button
-                    bsStyle="primary"
-                   
-                    onClick={() => this.setState({ show: true })}>
-                   Add Inventory Date
-                </Button>
-
-                <Modal
-                    show={this.state.show}
-                    onHide={this.handleHide}
-                    container={this}
-                    aria-labelledby="contained-modal-title"
-                >
-                    <Modal.Header closeButton>
-                          <Modal.Title id="contained-modal-title">
-                           Add Inventory Date
-                         </Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                       Enter Date
-                         <DatePicker
-                            onChange={this.onChange}
-                            value={this.state.date}
-                              />
-                      </Modal.Body>
-                    <Modal.Footer>
-                        <Button onClick={this.handleHide}>Close</Button>
-                        <Button onClick={this.addDate} >Save changes</Button>
-                    </Modal.Footer>
-                </Modal>
+            <div>
+                { 
+                    (this.state.mode === "view") ?
+                        <Select options={this.state.dateOptions} onChange={this.dateChange} placeholder="Select an option" />
+                        : <p></p>
+                        }
+                        
+                {this.state.mode}
+                <p>{this.state.id}</p>
+                
             </div>
         );
     }

@@ -17,7 +17,7 @@ export default class App extends Component {
         <Route path='/counter' component={Counter} />
             <Route path='/fetchdata' component={FetchData} />
             <Route path='/inventory' component={Inventory} />
-            <Route path='/inventoryAct' component={InventoryAct} />
+            <Route path='/inventoryAct/:mode/:id?' component={InventoryAct} />
       </Layout>
     );
   }
