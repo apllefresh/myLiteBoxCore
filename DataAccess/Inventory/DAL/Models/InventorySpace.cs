@@ -6,8 +6,8 @@ namespace Inventory.DAL.Models
     public class InventorySpace
     {
         [Column(name: "id")]
-        int Id { get; set; }
+        public int Id { get; set; }
         [Column(name: "name")]
-        string Name { get; set; }
+        public string Name { get; set; }
     }
 }

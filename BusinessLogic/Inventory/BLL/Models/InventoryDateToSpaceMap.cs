@@ -2,9 +2,10 @@
 {
     public class InventoryDateToSpaceMap
     {
-        int InventoryDateId { get; set; }
-        int InventorySpaceId { get; set; }
-        int PersonFromWarehouseId { get; set; }
-        int PersonFromOfficeId { get; set; }
+        public int Id { get; set; }
+        public int InventoryDateId { get; set; }
+        public int InventorySpaceId { get; set; }
+        public int PersonFromWarehouseId { get; set; }
+        public int PersonFromOfficeId { get; set; }
     }
 }

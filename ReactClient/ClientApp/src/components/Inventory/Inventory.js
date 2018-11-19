@@ -1,10 +1,8 @@
 ﻿import React, { Component } from 'react';
 import Select from 'react-select'
 import 'react-dropdown/style.css'
-import InventoryDateAdd from './InventoryDateAdd';
-import { Button } from 'react-bootstrap'
+import { Button, Glyphicon, ButtonGroup, ButtonToolbar } from 'react-bootstrap'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-
 
 export class Inventory extends Component {
     displayName = Inventory.name
@@ -12,18 +10,16 @@ export class Inventory extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            dateOptions: this.getDateOptions(), dateLoading: true, enableAddDateForm: false, selectDateId: 0,
-            headOptions: [], headLoading: true, enableAddHeadForm: false, selectHeadId: 0,
-            bodyOptions: [], bodyLoading: true
+            dateOptions: this.getDateOptions(), dateLoading: true, selectDateId: 0,
+            headData: [], headLoading: true
         };
         
         this.dateChange = this.dateChange.bind(this);
         this.getDateOptions = this.getDateOptions.bind(this);
-        this.deleteDate = this.deleteDate.bind(this);
-
-        this.headChange = this.headChange.bind(this);
-        this.getHeadOptions = this.getHeadOptions.bind(this);
-        this.deleteHead = this.deleteHead.bind(this);
+        this.getHeadData = this.getHeadData.bind(this);
+        this.viewAct = this.viewAct.bind(this);
+        this.editAct = this.editAct.bind(this);
+        this.deleteAct = this.deleteAct.bind(this);
     }
 
     getDateOptions() {
@@ -34,97 +30,78 @@ export class Inventory extends Component {
             });
             
     }
-
     dateChange = (v) => {
-        this.setState({ selectDateId: v.value, headOptions: this.getHeadOptions(v.value) });
+        this.setState({ selectDateId: v.value, headData: this.getHeadData(v.value) });
     }
-
-    deleteDate(){
-        var id = this.state.selectDateId;
-        fetch('api/inventoryDate/' + id,
-            {
-                method: 'DELETE',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                //  body: JSON.stringify(id )
-            });
-    }
-
-    /////////////
-    getHeadOptions(id) {
+    getHeadData(id) {
         fetch('api/inventoryHead/' + id)
             .then(response => response.json())
             .then(data => {
-                this.setState({ headOptions: data, headLoading: false });
+                this.setState({ headData: data, headLoading: false });
             });
 
     }
 
-    headChange = (v) => {
-        this.setState({ selectHeadId: v.value, bodyOptions: this.getBodyOptions(v.value) });
+    viewAct()
+    {
+        var win = window.open("/inventoryAct/?mode=add", '_blank');
+        win.focus();
+    }
+    editAct(id) {
+        var win = window.open("/inventoryAct/?mode=add&id="+id, '_blank');
+        win.focus();
+    }
+    deleteAct(id) {
+       
     }
 
-    deleteHead() {
-        var id = this.state.selectHeadId;
-        fetch('api/inventoryDate/' + id,
-            {
-                method: 'DELETE',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-            });
-    }
-    //////////////
-
-
-    getBodyOptions(id) {
-        fetch('api/inventoryBody/' + id)
-            .then(response => response.json())
-            .then(data => {
-                this.setState({ bodyOptions: data, bodyLoading: false });
-            });
-
-    }
-
-    /////////////////////////
-
+    buttonFormatter(cell, row) {
+         return (<ButtonToolbar>
+             <ButtonGroup>
+                 <Button onClick={this.viewAct}>
+                     <Glyphicon glyph="search" />
+                 </Button>
+                 <Button onClick={()=>this.editAct(row.Id)}>
+                     <Glyphicon glyph="pencil" />
+                 </Button>
+                 <Button onClick={() => this.deleteAct(row.Id)}>
+                     <Glyphicon glyph="trash" />
+                 </Button>
+                 
+             </ButtonGroup>
+         </ButtonToolbar>);
+}
+    
     render() {
+       
+
         return (
             <div>
                 <h1>Inventory</h1>
+                <Glyphicon glyph="pencil" /> 
                 <p>This component demonstrates fetching data from the server.</p>
                 {
                     this.state.dateLoading
                     ? <p><em>Loading dates...</em></p>
                         : <div>
                             <Select options={this.state.dateOptions} onChange={this.dateChange} placeholder="Select an option" />
-                            <Button onClick={() => this.deleteDate()} > Delete Inventory Date </Button>
-                            <InventoryDateAdd isEdit={false} onExited={() => this.getDateOptions()} />
                         </div>
                 }
-                
 
-                {
-                    this.state.headLoading
-                    ? <p><em>...</em></p>
-                    : <div>
-                        <Select options={this.state.headOptions} onChange={this.headChange} placeholder="Select an option" />
-                        <Button onClick={() => this.deleteHead()}> Delete Inventory Head </Button>
-                     </div>
-                }
-
+                <Button hidden={this.state.dateLoading}> Add inventory act </Button>
                 { 
                     this.state.bodyLoading ?
                         <p><em>dd</em></p>
-                        : <BootstrapTable data={this.state.bodyOptions} striped hover>
-                            <TableHeaderColumn isKey dataField='id' >Product ID</TableHeaderColumn>
-                            <TableHeaderColumn dataField='price'>Row Number</TableHeaderColumn>
-                            <TableHeaderColumn dataField='name'>Product Name</TableHeaderColumn>
-                            <TableHeaderColumn dataField='price'>Product Price</TableHeaderColumn>
-                            <TableHeaderColumn dataField='price'>Product Count</TableHeaderColumn>
+                        : <BootstrapTable data={this.state.headData} striped hover>
+                            <TableHeaderColumn dataField='Id' isKey hidden >Product ID</TableHeaderColumn>
+                            <TableHeaderColumn dataField='CreatedOn' hidden>CreatedOn</TableHeaderColumn>
+                            <TableHeaderColumn dataField='CreatedBy' hidden>CreatedBy</TableHeaderColumn>
+                            <TableHeaderColumn dataField='Number'>Number</TableHeaderColumn>
+                            <TableHeaderColumn dataField='InventorySpaceId'>InventorySpaceId</TableHeaderColumn>
+                            <TableHeaderColumn dataField='PersonFromWarehouseId'>PersonFromWarehouseId</TableHeaderColumn>
+                            <TableHeaderColumn dataField='PersonFromOfficeId'>PersonFromOfficeId</TableHeaderColumn>
+                            
+                            <TableHeaderColumn dataField="button" dataFormat={this.buttonFormatter.bind(this)}>Buttons</TableHeaderColumn>
                         </BootstrapTable>
                 }
 

@@ -26,14 +26,28 @@ namespace ReactClient.Controllers
             try
             {
                 var services = await _headService.GetAllItems(id).ConfigureAwait(false);
-                var options = services.Select(head =>
-                new
-                {
-                    label = head.Number,
-                    value = head.Id
-                });
+                
+                return Ok(JsonConvert.SerializeObject(services));
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(500, exception.Message);
+            }
+        }
 
-                return Ok(JsonConvert.SerializeObject(options));
+        [Route("getColumns")]
+        public IActionResult GetColumns()
+        {
+            try
+            {
+                var columns = new
+                {
+                    Header = "number",
+                    accessor = "number",
+                    type = "text"
+                };
+
+                return  Ok(JsonConvert.SerializeObject(columns));
             }
             catch (Exception exception)
             {

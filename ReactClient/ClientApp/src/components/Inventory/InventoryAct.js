@@ -2,7 +2,7 @@
 import { Button, Modal } from 'react-bootstrap'
 import DatePicker from 'react-date-picker';
 
-class InventoryDateAdd extends Component {
+export class InventoryAct extends Component {
     constructor(props, context) {
         super(props, context);
         
@@ -41,6 +41,8 @@ class InventoryDateAdd extends Component {
     render() {
         return (
             <div className="modal-container" style={{ height: 200 }}>
+                <p>Age: {new URLSearchParams(this.props.location.search).get("mode")}</p>
+                <p> {this.props.match.params.id} </p>
                 <Button
                     bsStyle="primary"
                    
@@ -76,4 +78,3 @@ class InventoryDateAdd extends Component {
     }
 }
 
-export default InventoryDateAdd;
