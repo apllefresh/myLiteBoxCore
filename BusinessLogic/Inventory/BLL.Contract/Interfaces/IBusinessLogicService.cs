@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace BLL.Interfaces
+namespace Inventory.BLL.Contract.Interfaces
 {
-    public interface IBLLService<TBL, TDA> where TBL : class where TDA : class
+    public interface IBusinessLogicService<TBL, TDA> where TBL : class where TDA : class
     {
         Task<IReadOnlyCollection<TBL>> GetAllItems();
         Task<TBL> GetItemById(int id);

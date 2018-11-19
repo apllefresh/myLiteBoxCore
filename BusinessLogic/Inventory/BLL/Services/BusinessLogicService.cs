@@ -3,25 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using BLL.Interfaces;
-//using InventoryDAL.Interfaces;
+using Inventory.BLL.Contract.Interfaces;
 using Inventory.DAL.Contract.Interfaces;
 
-namespace BLL.Services
+namespace Inventory.BLL.Services
 {
-    public class BLLService<TBL, TDA> : IBLLService<TBL, TDA>
+    public abstract class BusinessLogicService<TBL, TDA> : IBusinessLogicService<TBL, TDA>
         where TBL : class where TDA : class
     {
         private readonly IMapper _mapper;
         private readonly IDataAccessRepository<TDA> _repository;
-        
-        protected BLLService(IDataAccessRepository<TDA> repository, IMapper mapper)
+        private IEnumerable<TBL> _items;
+
+        protected BusinessLogicService(IDataAccessRepository<TDA> repository, IMapper mapper)
         {
-            _repository = repository
-                          ??
+            _repository = repository ??
                           throw new ArgumentNullException(nameof(repository));
-            _mapper = mapper
-                      ??
+            _mapper = mapper ??
                       throw new ArgumentNullException(nameof(mapper));
         }
 

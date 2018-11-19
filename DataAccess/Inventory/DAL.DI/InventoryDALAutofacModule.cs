@@ -1,38 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-
-using BLL.Interfaces;
-using BLL.Services;
-using Autofac;
+﻿using Autofac;
+using Inventory.DAL.Contract.Interfaces;
+using Inventory.DAL.Repositories;
+using Inventory.DAL.EF;
 using AutoMapper;
-using InventoryDAL.Repositories;
+using System.Collections.Generic;
+using System;
 
-namespace BLL.DI
+namespace Inventory.DAL.DI
 {
-    public class BLLAutofacModule : Module
+    public class InventoryDALAutofacModule : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<InventoryDateService>()
-                .As<IInventoryDateService>()
+            builder.RegisterType<InventoryBodyRepository>()
+                .As<IInventoryBodyRepository>()
                 .InstancePerLifetimeScope();
             builder.RegisterType<InventoryDateRepository>()
-                 .As<InventoryDateRepository>()
-                 .InstancePerLifetimeScope();
-
-            builder.RegisterType<InventoryHeadService>()
-                .As<IInventoryHeadService>()
+                .As<IInventoryDateRepository>()
                 .InstancePerLifetimeScope();
             builder.RegisterType<InventoryHeadRepository>()
-                 .As<InventoryHeadRepository>()
-                 .InstancePerLifetimeScope();
-
-            builder.RegisterType<InventoryBodyService>()
-                .As<IInventoryBodyService>()
+                .As<IInventoryHeadRepository>()
                 .InstancePerLifetimeScope();
-            builder.RegisterType<InventoryBodyRepository>()
-                 .As<InventoryBodyRepository>()
-                 .InstancePerLifetimeScope();
+            builder.RegisterType<InventoryResultRepository>()
+                .As<IInventoryResultRepository>()
+                .InstancePerLifetimeScope();
+           
+            builder.RegisterType<DataAccessContext>()
+                .As<DataAccessContext>()
+                .InstancePerLifetimeScope();
 
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
             builder.RegisterAssemblyTypes(assemblies)

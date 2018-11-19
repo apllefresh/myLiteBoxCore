@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AssemblyName>Inventory.BLL.Contract</AssemblyName>
+    <RootNamespace>Inventory.BLL.Contract</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Inventory.DAL.Contract">
+      <HintPath>..\..\..\DataAccess\Inventory\DAL.Contract\bin\Debug\netcoreapp2.1\Inventory.DAL.Contract.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

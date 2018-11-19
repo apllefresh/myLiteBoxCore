@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.8.1" />
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Inventory.DAL.Contract">
+      <HintPath>..\BusinessLogic\Inventory\BLL\bin\Debug\netcoreapp2.1\Inventory.DAL.Contract.dll</HintPath>
+    </Reference>
+    <Reference Include="InventoryDAL">
+      <HintPath>..\InventoryDAL\bin\Debug\netcoreapp2.1\InventoryDAL.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

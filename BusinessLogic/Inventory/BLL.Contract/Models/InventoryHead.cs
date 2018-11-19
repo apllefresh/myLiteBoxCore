@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BLL.Entities
+namespace Inventory.BLL.Contract.Models
 {
     public class InventoryHead
     {
