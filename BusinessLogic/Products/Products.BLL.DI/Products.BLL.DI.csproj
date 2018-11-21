@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.8.1" />
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Products.BLL">
+      <HintPath>..\Products.BLL\bin\Debug\netcoreapp2.1\Products.BLL.dll</HintPath>
+    </Reference>
+    <Reference Include="Products.BLL.Contract">
+      <HintPath>..\Products.BLL.Contract\bin\Debug\netcoreapp2.1\Products.BLL.Contract.dll</HintPath>
+    </Reference>
+    <Reference Include="Products.DAL.Contract">
+      <HintPath>..\..\..\DataAccess\Products\Products.DAL.Contract\bin\Debug\netcoreapp2.1\Products.DAL.Contract.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-
+using System.Configuration;
 
 namespace ReactClient
 {
@@ -35,10 +35,11 @@ namespace ReactClient
             });
 
             var builder = new ContainerBuilder();
-            
-            
+
+            var productServiceUrl = Configuration.GetValue<string>("Services:ProductServiceUrl");
+            builder.RegisterModule(new InventoryBLLAutofacModule(productServiceUrl));
             builder.RegisterModule(new InventoryDALAutofacModule());
-            builder.RegisterModule(new InventoryBLLAutofacModule());
+            //builder.RegisterModule(new InventoryBLLAutofacModule());
             builder.Populate(services);
             var container = builder.Build();
             return new AutofacServiceProvider(container);

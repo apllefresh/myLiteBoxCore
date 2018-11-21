@@ -7,8 +7,8 @@ namespace Inventory.DAL.Repositories
 {
     public class InventoryBodyRepository : DataAccessRepository<InventoryBody>,IInventoryBodyRepository
     {
-        private DataAccessContext _context;
-        private IMapper _mapper;
+        protected DataAccessContext _context;
+        protected IMapper _mapper;
 
         public InventoryBodyRepository(DataAccessContext context, IMapper mapper) : base(context, mapper)
         {

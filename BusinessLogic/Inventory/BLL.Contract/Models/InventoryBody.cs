@@ -7,5 +7,8 @@
         public int goodId { get; set; }
         public decimal Count { get; set; }
         public int InventoryHeadId { get; set; }
+
+        public string Ean { get; set; }
+        public string Name { get; set; }
     }
 }

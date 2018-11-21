@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using Inventory.BLL.Contract.Interfaces;
-using Inventory.DAL.Contract.Interfaces;
+using Products.BLL.Contract.Interfaces;
+using Products.DAL.Contract.Interfaces;
 
-namespace Inventory.BLL.Services
+namespace Products.BLL.Services
 {
     public abstract class BusinessLogicService<TBL, TDA> : IBusinessLogicService<TBL, TDA>
         where TBL : class where TDA : class

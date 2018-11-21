@@ -9,7 +9,7 @@ using BI = Inventory.BLL.Contract.Interfaces;
 
 namespace ReactClient.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/inventoryBody")]
     [ApiController]
     public class InventoryBodyController : GenericController<B.InventoryBody, D.InventoryBody>
     {

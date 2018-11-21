@@ -2,52 +2,120 @@
 import Select from 'react-select'
 import 'react-dropdown/style.css'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import { InventoryBodyTable } from './InventoryBodyTable';
+
 
 export class InventoryAct extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
             mode: this.props.match.params.mode, id: this.props.match.params.id
-            , dateOptions: this.getDateOptions(), selectDateId:0
+            , spaceOptions: this.getSpaceOptions(), selectSpaceId: 0
+            , tableBody: this.getTableBody()
+            , value: '', valueEan:''
         };
        
 
-        this.getDateOptions = this.getDateOptions.bind(this);
-        this.dateChange = this.dateChange.bind(this);
-       
+        this.getSpaceOptions = this.getSpaceOptions.bind(this);
+        this.spaceChange = this.spaceChange.bind(this);
+
+        this.getTableBody = this.getTableBody.bind(this);
+
+        this.handleChange = this.handleChange.bind(this);
+        this.keyPress = this.keyPress.bind(this);
     }
 
-   
+  
 
-    getDateOptions() {
+
+
+
+    getSpaceOptions() {
         fetch('api/inventorySpace/')
             .then(response => response.json())
             .then(data =>
             {
                 var tdata = [];
                 data.map((t, index) => tdata.push({ label: t.Name, value: t.Id }));
-                this.setState({ dateOptions: tdata, dateLoading: false });
+                this.setState({ spaceOptions: tdata, dateLoading: false });
             });
+    }
+    spaceChange = (v) => {
+        this.setState({ selectSpaceId: v.value });
+    }
 
+    getTableBody() {
+        if (this.props.match.params.mode !== "add") {
+            fetch('api/inventoryBody/' + this.props.match.params.id)
+                .then(response => response.json())
+                .then(data => {
+                    this.setState({ tableBody: data });
+                });
+        }
+        else {
+            this.setState({ tableBody: [] });
+        }
     }
-    dateChange = (v) => {
-        this.setState({ selectDateId: v.value });
+
+
+    handleChange(e) {
+        this.setState({ value: e.target.value });
     }
-   
+
+    keyPress(e) {
+        if (e.keyCode === 13) {
+            this.setState({ valueEan: e.target.value });
+        }
+    }
+
+    customNameField = (column, attr, editorClass, ignoreEditable) => {
+        return (
+            <input placeholder="Product EAN" className="form-control editor edit-text" value={this.state.value} onKeyDown={this.keyPress} onChange={this.handleChange}  />
+        );
+    }
+    customField = (column, attr, editorClass, ignoreEditable) => {
+        return (
+            <input disabled placeholder="Product Name" className="form-control editor edit-text" value={this.state.valueEan} />
+        );
+    }
+
     render() {
+       
+
         return (
             <div>
                 { 
                     (this.state.mode === "view") ?
-                        <Select options={this.state.dateOptions} onChange={this.dateChange} placeholder="Select an option" />
+                        <Select options={this.state.spaceOptions} onChange={this.spaceChange} placeholder="Select an option" />
                         : <p></p>
                         }
                         
                 {this.state.mode}
                 <p>{this.state.id}</p>
-                
+               
+                <BootstrapTable data={this.state.tableBody} insertRow={true} renderAlert={false}  >
+                    <TableHeaderColumn dataField='Id' editable={true} hidden>Product Id</TableHeaderColumn>
+                    <TableHeaderColumn dataField='Number' editable={true} >Number</TableHeaderColumn>
+                    <TableHeaderColumn isKey
+                        dataField='Ean'
+                        editable={(this.state.mode === "view" ? false : true)}
+                        getFieldValue={() => { return this.state.value; }}
+                        customInsertEditor={{ getElement: this.customNameField }}
+                    >
+                        Product EAN
+                    </TableHeaderColumn>
+                    <TableHeaderColumn
+                        dataField='Name'
+                        editable={false}
+                                           >
+                        Product Name</TableHeaderColumn>
+                    <TableHeaderColumn dataField='Count' editable={(this.state.mode === "view" ? false : true)}>Product Count</TableHeaderColumn>
+                </BootstrapTable>
+                <InventoryBodyTable data={this.state.tableBody}  > </InventoryBodyTable>
             </div>
         );
     }
 }
+
+
 
