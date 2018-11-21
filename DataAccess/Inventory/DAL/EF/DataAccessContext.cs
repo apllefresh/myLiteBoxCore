@@ -7,6 +7,13 @@ namespace Inventory.DAL.EF
 {
     public class DataAccessContext : DbContext
     {
+        private readonly string _connectionString;
+
+        public DataAccessContext(string connectionString)
+        {
+            _connectionString = connectionString;
+        }
+
         public DbSet<InventoryDate> InventoryDates { get; set; }
         public DbSet<InventoryHead> InventoryHeads { get; set; }
         public DbSet<InventoryBody> InventoryBody { get; set; }
@@ -14,14 +21,9 @@ namespace Inventory.DAL.EF
         public DbSet<InventorySpace> InventorySpace { get; set; }
         public DbSet<InventoryDateToSpaceMap> InventoryDateToSpaceMap { get; set; }
 
-        public string ConnectionString { get; }
-
-        public DataAccessContext(IConfiguration configuration) => ConnectionString = configuration.GetSection("ConnectionStrings:InventoryConnection")
-           .Value;
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connection = new NpgsqlConnection(ConnectionString);
+            var connection = new NpgsqlConnection(_connectionString);
             optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
             optionsBuilder.UseNpgsql(connection);
         }

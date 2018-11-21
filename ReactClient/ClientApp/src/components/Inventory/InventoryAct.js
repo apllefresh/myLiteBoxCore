@@ -90,27 +90,8 @@ export class InventoryAct extends Component {
                         : <p></p>
                         }
                         
-                {this.state.mode}
-                <p>{this.state.id}</p>
+                
                
-                <BootstrapTable data={this.state.tableBody} insertRow={true} renderAlert={false}  >
-                    <TableHeaderColumn dataField='Id' editable={true} hidden>Product Id</TableHeaderColumn>
-                    <TableHeaderColumn dataField='Number' editable={true} >Number</TableHeaderColumn>
-                    <TableHeaderColumn isKey
-                        dataField='Ean'
-                        editable={(this.state.mode === "view" ? false : true)}
-                        getFieldValue={() => { return this.state.value; }}
-                        customInsertEditor={{ getElement: this.customNameField }}
-                    >
-                        Product EAN
-                    </TableHeaderColumn>
-                    <TableHeaderColumn
-                        dataField='Name'
-                        editable={false}
-                                           >
-                        Product Name</TableHeaderColumn>
-                    <TableHeaderColumn dataField='Count' editable={(this.state.mode === "view" ? false : true)}>Product Count</TableHeaderColumn>
-                </BootstrapTable>
                 <InventoryBodyTable data={this.state.tableBody}  > </InventoryBodyTable>
             </div>
         );

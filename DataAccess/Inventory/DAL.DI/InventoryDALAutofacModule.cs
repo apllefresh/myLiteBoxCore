@@ -10,6 +10,13 @@ namespace Inventory.DAL.DI
 {
     public class InventoryDALAutofacModule : Module
     {
+        private readonly string _inventoryConnectionString;
+
+        public InventoryDALAutofacModule(string inventoryConnectionString)
+        {
+            _inventoryConnectionString = inventoryConnectionString
+                ?? throw new ArgumentNullException(nameof(inventoryConnectionString));
+        }
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<InventoryBodyRepository>()
@@ -31,9 +38,11 @@ namespace Inventory.DAL.DI
                 .As<IInventoryDateToSpaceMapRepository>()
                 .InstancePerLifetimeScope();
 
-            builder.RegisterType<DataAccessContext>()
-                .As<DataAccessContext>()
-                .InstancePerLifetimeScope();
+            builder.Register(context => new DataAccessContext
+            (
+               connectionString: _inventoryConnectionString
+            )).AsSelf()
+            .InstancePerLifetimeScope();
 
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
             builder.RegisterAssemblyTypes(assemblies)

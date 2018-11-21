@@ -5,86 +5,86 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace ReactClient.Controllers
-{ 
-    public abstract class GenericController<TBL, TDA> : ControllerBase where TBL : class where TDA : class
 {
-    private readonly IBusinessLogicService<TBL, TDA> _businessLogicService;
-
-    protected GenericController(IBusinessLogicService<TBL, TDA> service)
+    public abstract class GenericController<TBL, TDA> : ControllerBase where TBL : class where TDA : class
     {
-        _businessLogicService = service;
-    }
+        private readonly IBusinessLogicService<TBL, TDA> _businessLogicService;
 
-    [HttpGet]
-    public virtual async Task<IActionResult> GetAllItems()
-    {
-        try
+        protected GenericController(IBusinessLogicService<TBL, TDA> service)
         {
-            var services = await _businessLogicService.GetAllItems().ConfigureAwait(false);
-            return Ok(JsonConvert.SerializeObject(services));
+            _businessLogicService = service;
         }
-        catch (Exception exception)
-        {
-            return StatusCode(500, exception.Message);
-        }
-    }
 
-    [HttpGet("{id}")]
-    public virtual async Task<IActionResult> GetItemById(int id)
-    {
-        try
+        [HttpGet]
+        public virtual async Task<IActionResult> GetAllItems()
         {
-            var service = await _businessLogicService.GetItemById(id).ConfigureAwait(false);
-            return service == null
-                ? throw new Exception()
-                : Ok(JsonConvert.SerializeObject(service));
+            try
+            {
+                var services = await _businessLogicService.GetAllItems().ConfigureAwait(false);
+                return Ok(JsonConvert.SerializeObject(services));
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(500, exception.Message);
+            }
         }
-        catch
-        {
-            return NotFound($"{typeof(TBL).Name} with Id: {id} not found");
-        }
-    }
 
-    [HttpPut]
-    public virtual async Task<IActionResult> UpdateItem([FromBody] TBL item)
-    {
-        try
+        [HttpGet("{id}")]
+        public virtual async Task<IActionResult> GetItemById(int id)
         {
-            await _businessLogicService.Update(item).ConfigureAwait(false);
-            return Ok($"{typeof(TBL).Name} have been successfully updated");
+            try
+            {
+                var service = await _businessLogicService.GetItemById(id).ConfigureAwait(false);
+                return service == null
+                    ? throw new Exception()
+                    : Ok(JsonConvert.SerializeObject(service));
+            }
+            catch
+            {
+                return NotFound($"{typeof(TBL).Name} with Id: {id} not found");
+            }
         }
-        catch 
-        {
-            return NotFound($"{typeof(TBL).Name} not found");
-        }
-    }
 
-    [HttpDelete("{id}")]
-    public virtual async Task<IActionResult> DeleteItem(int id)
-    {
-        try
+        [HttpPut]
+        public virtual async Task<IActionResult> UpdateItem([FromBody] TBL item)
         {
-            await _businessLogicService.Delete(id).ConfigureAwait(false);
-            return Ok($"{typeof(TBL).Name} have been successfully removed");
+            try
+            {
+                await _businessLogicService.Update(item).ConfigureAwait(false);
+                return Ok($"{typeof(TBL).Name} have been successfully updated");
+            }
+            catch
+            {
+                return NotFound($"{typeof(TBL).Name} not found");
+            }
         }
-        catch
-        {
-            return NotFound($"{typeof(TBL).Name} not found");
-        }
-    }
 
-    [HttpPost]
-    public virtual async Task<IActionResult> CreateItem([FromBody] TBL item)
-    {
-        try
+        [HttpDelete("{id}")]
+        public virtual async Task<IActionResult> DeleteItem(int id)
         {
-            await _businessLogicService.Create(item).ConfigureAwait(false);
-            return Ok($"{typeof(TBL).Name} have been successfully created");
+            try
+            {
+                await _businessLogicService.Delete(id).ConfigureAwait(false);
+                return Ok($"{typeof(TBL).Name} have been successfully removed");
+            }
+            catch
+            {
+                return NotFound($"{typeof(TBL).Name} not found");
+            }
         }
-        catch (Exception exception)
+
+        [HttpPost]
+        public virtual async Task<IActionResult> CreateItem([FromBody] TBL item)
         {
-            return StatusCode(500, exception.Message);
+            try
+            {
+                await _businessLogicService.Create(item).ConfigureAwait(false);
+                return Ok($"{typeof(TBL).Name} have been successfully created");
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(500, exception.Message);
+            }
         }
     }
-}
 }

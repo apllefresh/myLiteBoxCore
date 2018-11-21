@@ -37,9 +37,13 @@ namespace ReactClient
             var builder = new ContainerBuilder();
 
             var productServiceUrl = Configuration.GetValue<string>("Services:ProductServiceUrl");
+
+            var inventoryConnectionString = Configuration.GetValue<string>("ConnectionStrings:InventoryConnection");
+            var productConnectionString = Configuration.GetValue<string>("ConnectionStrings:ProductsConnection");
+
             builder.RegisterModule(new InventoryBLLAutofacModule(productServiceUrl));
-            builder.RegisterModule(new InventoryDALAutofacModule());
-            //builder.RegisterModule(new InventoryBLLAutofacModule());
+            builder.RegisterModule(new InventoryDALAutofacModule(inventoryConnectionString));
+            
             builder.Populate(services);
             var container = builder.Build();
             return new AutofacServiceProvider(container);

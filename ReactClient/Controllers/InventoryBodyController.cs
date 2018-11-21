@@ -33,5 +33,6 @@ namespace ReactClient.Controllers
                 return StatusCode(500, exception.Message);
             }
         }
+       
     }
 }
