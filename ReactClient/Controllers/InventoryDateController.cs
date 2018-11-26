@@ -23,25 +23,5 @@ namespace ReactClient.Controllers
             _dateService = dateService;
         }
 
-        [HttpGet]
-        public override async Task<IActionResult> GetAllItems()
-        {
-            try
-            {
-                var services = await _dateService.GetAllItems().ConfigureAwait(false);
-                var options = services.Select(date =>
-                new
-                {
-                    label = date.Date,
-                    value = date.Id
-                });
-                
-                return Ok(JsonConvert.SerializeObject(options));
-            }
-            catch (Exception exception)
-            {
-                return StatusCode(500, exception.Message);
-            }
-        }
     }
 }

@@ -59,7 +59,7 @@ class CustomInsertModal extends React.Component {
         return (
             <div className='modal-content react-bs-table-insert-modal'>
                 <div className='modal-header react-bs-table-inser-modal-header'>
-                    <h4 className='modal-title'>Custom Insert Modal</h4>
+                    <h4 className='modal-title'>Add Product</h4>
                     
                 </div>
                 <div className='modal-body'>

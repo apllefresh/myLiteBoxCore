@@ -29,9 +29,9 @@ export class NavMenu extends Component {
                                 <Glyphicon glyph='education' /> inventory
               </NavItem>
                         </LinkContainer>
-                        <LinkContainer to={'/fetchdata'}>
+                        <LinkContainer to={'/InventorySettings'}>
                             <NavItem>
-                                <Glyphicon glyph='th-list' /> Fetch data
+                                <Glyphicon glyph='th-list' /> Inventory Settings
               </NavItem>
                         </LinkContainer>
                     </Nav>
