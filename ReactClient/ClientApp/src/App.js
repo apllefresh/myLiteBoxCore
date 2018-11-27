@@ -6,7 +6,7 @@ import { Counter } from './components/Counter';
 import { Inventory } from './components/Inventory/Inventory';
 import { InventoryAct } from './components/Inventory/InventoryAct';
 import { InventorySettings } from './components/Inventory/InventorySettings';
-
+import { InventoryResult } from './components/Inventory/InventoryResult';
 
 export default class App extends Component {
   displayName = App.name
@@ -19,6 +19,7 @@ export default class App extends Component {
             <Route path='/InventorySettings' component={InventorySettings} />
             <Route path='/inventory' component={Inventory} />
             <Route path='/inventoryAct/:mode/:id?' component={InventoryAct} />
+            <Route path='/InventoryResult' component={InventoryResult} />
       </Layout>
     );
   }

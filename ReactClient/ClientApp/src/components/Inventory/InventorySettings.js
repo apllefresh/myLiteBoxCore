@@ -1,7 +1,6 @@
 ﻿import React, { Component} from 'react';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import { Button, Glyphicon, ButtonGroup, ButtonToolbar, Grid, Row, Col, Modal } from 'react-bootstrap'
-var dateFormat = require('dateformat');
 
 class InventoryDateInsertModal extends React.Component {
 
@@ -139,7 +138,7 @@ export class InventorySettings extends Component {
                 .then(data => {
                     var tdata = [];
                     data.forEach((date, i) => {
-                        var t = { Id: date.Id, Date: dateFormat(date.Date,"dd-mm-yy") };
+                        var t = { Id: date.Id, Date: date.Date };
                         tdata.push(t);
                     }, this);
                     this.setState({ dates: tdata });

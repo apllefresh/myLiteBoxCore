@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-
+import { Button, Glyphicon, ButtonGroup, ButtonToolbar, Grid, Row, Col, Modal } from 'react-bootstrap'
 
 //const products = [];
 
@@ -106,7 +106,21 @@ export  class InventoryBodyTable extends React.Component {
             <CustomInsertModal  {...attr} />
         );
     }
-
+    buttonFormatter(cell, row) {
+        return (<ButtonToolbar>
+            <ButtonGroup>
+                <Button onClick={() => this.viewAct(row.Id)}>
+                    <Glyphicon glyph="search" />
+                </Button>
+                <Button onClick={() => this.editAct(row.Id)}>
+                    <Glyphicon glyph="pencil" />
+                </Button>
+                <Button onClick={() => this.handleShowModalDeleteHead()}>
+                    <Glyphicon glyph="trash" />
+                </Button>
+            </ButtonGroup>
+        </ButtonToolbar>);
+    }
     render() {
         const options = {
             insertModal: this.createCustomModal
@@ -118,6 +132,7 @@ export  class InventoryBodyTable extends React.Component {
                 <TableHeaderColumn dataField='Ean' isKey={true}>Product EAN</TableHeaderColumn>
                 <TableHeaderColumn dataField='Name'>Product Name</TableHeaderColumn>
                 <TableHeaderColumn dataField='Count'>Product Count</TableHeaderColumn>
+                <TableHeaderColumn dataField="button" width='150' dataFormat={this.buttonFormatter.bind(this)}>Actions</TableHeaderColumn>
             </BootstrapTable>
         );
     }
